@@ -7,13 +7,12 @@ import java.util.Vector;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Sebastián Medina
  */
 public class moneda {
-    
+
     public static Integer m;
     public static int[] monedas;
 
@@ -40,42 +39,48 @@ public class moneda {
     public void setMonedas(int[] monedas) {
         this.monedas = monedas;
     }
-    
-    public void pasarstring(String c)      
-    {
-        
+
+    public void pasarstring(String c) {
+
         String[] vector = c.split("\\,");
         int[] numeros = new int[vector.length];
-        for (int i = 0; i < vector.length-1; i++) {
-            numeros[i]= Integer.parseInt(vector[i]);
+        int n = numeros.length;
+        for (int i = 0; i < vector.length; i++) {
+            numeros[i] = Integer.parseInt(vector[i]);
         }
-        monedas=numeros;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (numeros[j] > numeros[j + 1]) {
+                    // swap temp and arr[i]
+                    int temp = numeros[j];
+                    numeros[j] = numeros[j + 1];
+                    numeros[j + 1] = temp;
+                }
+            }
+        }
+        monedas = numeros;
     }
-    
-    public String cambio()
-    {
-        String aux="";
 
-		Vector<Integer> ans = new Vector<>(); 
+    public String cambio() {
+        String aux = "";
 
-		// Traverse through all denomination 
-		for (int i = monedas.length - 1; i >= 0; i--) 
-		{ 
-			// Find denominations 
-			while (m >= monedas[i]) 
-			{ 
-				m -= monedas[i]; 
-				ans.add(monedas[i]); 
-			} 
-		} 
+        Vector<Integer> ans = new Vector<>();
 
-		// Print result 
-		for (int i = 0; i < ans.size(); i++) 
-		{ 
-			System.out.print( 
-				" " + ans.elementAt(i)); 
-		} 
+        // Traverse through all denomination 
+        for (int i = monedas.length - 1; i >= 0; i--) {
+            // Find denominations 
+            while (m >= monedas[i]) {
+                m -= monedas[i];
+                ans.add(monedas[i]);
+            }
+        }
+
+        // Print result 
+        for (int i = 0; i < ans.size(); i++) {
+            System.out.print(
+                    " " + ans.elementAt(i));
+        }
         return aux;
     }
-    
+
 }
