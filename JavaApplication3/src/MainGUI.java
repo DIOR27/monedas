@@ -25,9 +25,12 @@ public class MainGUI extends javax.swing.JFrame {
     /**
      * Creates new form MainGUI
      */
+    
+    
     public MainGUI() {
         initComponents();
         setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -246,7 +249,16 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescomponerActionPerformed
 
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
+        if (jRadioButton2.isSelected()) {
+            moneda monedita = new moneda();
+            monedita.setM(Integer.parseInt(txtDescomponer.getText()));
+            monedita.pasarstring(txtSistema.getText());
+            monedita.cambio();
+        }
+        else
+        {
         
+        }
     }//GEN-LAST:event_btnCambioActionPerformed
     
     /**
@@ -260,7 +272,7 @@ public class MainGUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

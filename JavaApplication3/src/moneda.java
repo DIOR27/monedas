@@ -14,8 +14,8 @@ import java.util.Vector;
  */
 public class moneda {
     
-    public Integer m;
-    public int[] monedas;
+    public static Integer m;
+    public static int[] monedas;
 
     public moneda() {
     }
@@ -55,7 +55,7 @@ public class moneda {
     public String cambio()
     {
         String aux="";
-        	// Initialize result 
+
 		Vector<Integer> ans = new Vector<>(); 
 
 		// Traverse through all denomination 
@@ -69,7 +69,7 @@ public class moneda {
 			} 
 		} 
 
-
+		// Print result 
 		for (int i = 0; i < ans.size(); i++) 
 		{ 
 			System.out.print( 
