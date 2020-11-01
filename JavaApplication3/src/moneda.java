@@ -87,15 +87,20 @@ public class moneda {
         for (int i = monedas.length - 1; i >= 0; i--) {
             // Find denominations 
             while (m >= monedas[i]) {
+                System.out.println("¿Es  " + m + " mayor o igual a " + monedas[i] + "?");
+                if (m>=monedas[i]) {
+                    System.out.println("Si, entonces " + m + " - " + monedas[i]);
+                } else {
+                    System.out.println("No.");
+                }
                 m -= monedas[i];
                 ans.add(monedas[i]);
             }
         }
-
         // Print result 
+        System.out.print("Cambio: ");
         for (int i = 0; i < ans.size(); i++) {
-            System.out.print(
-                    " " + ans.elementAt(i));
+            System.out.print(ans.elementAt(i) + " ");
         }
         return aux;
     }
