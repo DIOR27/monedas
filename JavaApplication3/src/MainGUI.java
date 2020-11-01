@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -206,6 +208,8 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
         JFileChooser jf = new JFileChooser();
+        FileFilter filter = new FileNameExtensionFilter("Documentos de texto(*.txt)","txt");
+        jf.setFileFilter(filter);
         jf.showOpenDialog(this);
         File archivo = jf.getSelectedFile();
         if (archivo != null) {
@@ -214,7 +218,7 @@ public class MainGUI extends javax.swing.JFrame {
                 String file = archivo.getAbsolutePath();
                 reader = new FileReader(file);
                 BufferedReader br = new BufferedReader(reader);
-                txtSistema.read(br, null);
+                   txtSistema.read(br, null);
                 br.close();
                 txtSistema.setEnabled(true);
                 txtSistema.setEditable(false);
@@ -253,9 +257,15 @@ public class MainGUI extends javax.swing.JFrame {
                 moneda monedita = new moneda();
                 monedita.setM(Integer.parseInt(txtDescomponer.getText()));
                 monedita.pasarstring(txtSistema.getText());
-                monedita.cambio();
+                if (monedita.comp()) {
+                    monedita.cambio();
+                }
+                else
+                {
+                   JOptionPane.showMessageDialog(this, "El valor de las monedas deben ser al menos el doble de su inferior inmediato.", "Error", JOptionPane.ERROR_MESSAGE); 
+                }
             } else {
-
+                   
             }
         } else {
             JOptionPane.showMessageDialog(this, "El sistema monetario ingresado no es correcto.\n\nEjemplo: 100,25,50,1", "Error", JOptionPane.ERROR_MESSAGE);
