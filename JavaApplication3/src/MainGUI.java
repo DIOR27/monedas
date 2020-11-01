@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author diego
@@ -25,12 +24,10 @@ public class MainGUI extends javax.swing.JFrame {
     /**
      * Creates new form MainGUI
      */
-    
-    
     public MainGUI() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -199,7 +196,7 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        if(jRadioButton1.isSelected()) {
+        if (jRadioButton1.isSelected()) {
             txtSistema.setEnabled(false);
             btnExaminar.setEnabled(true);
             labelTexto.setEnabled(true);
@@ -211,7 +208,7 @@ public class MainGUI extends javax.swing.JFrame {
         JFileChooser jf = new JFileChooser();
         jf.showOpenDialog(this);
         File archivo = jf.getSelectedFile();
-        if(archivo!=null){
+        if (archivo != null) {
             FileReader reader = null;
             try {
                 String file = archivo.getAbsolutePath();
@@ -236,7 +233,7 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExaminarActionPerformed
 
     private void txtDescomponerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescomponerActionPerformed
-        
+
         Validacion validar = new Validacion();
         validar.establecer_cadena(txtDescomponer.getText());
         if (validar.verificar_entero()) {
@@ -249,18 +246,22 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescomponerActionPerformed
 
     private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
-        if (jRadioButton2.isSelected()) {
-            moneda monedita = new moneda();
-            monedita.setM(Integer.parseInt(txtDescomponer.getText()));
-            monedita.pasarstring(txtSistema.getText());
-            monedita.cambio();
-        }
-        else
-        {
-        
+        Validacion validar = new Validacion();
+        validar.establecer_cadena(txtSistema.getText());
+        if (validar.verificar_sistema_monetario()) {
+            if (jRadioButton2.isSelected()) {
+                moneda monedita = new moneda();
+                monedita.setM(Integer.parseInt(txtDescomponer.getText()));
+                monedita.pasarstring(txtSistema.getText());
+                monedita.cambio();
+            } else {
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El sistema monetario ingresado no es correcto.\n\nEjemplo: 100,25,50,1", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCambioActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

@@ -217,6 +217,10 @@ public class Validacion {
     public boolean verificar_nombre() {
         return cadena.matches("[A-Z-ÑÁÉÍÓÚ][a-z-ñáéíóú]+\\s[A-Z-ÑÁÉÍÓÚ][a-z-ñáéíóú]+|[A-Z-ÑÁÉÍÓÚ][a-z-ñ]+");
     }
+    
+    public boolean verificar_sistema_monetario() {
+        return cadena.matches("[1-9][0-9]*(\\,[1-9][0-9]*)*");
+    }
 
     //--------------------------------------------------------------------------
     public boolean verificar_cedula() {
