@@ -53,6 +53,7 @@ public class MainGUI extends javax.swing.JFrame {
         btnExaminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtDescomponer = new javax.swing.JTextField();
+        btnCambio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +106,14 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        btnCambio.setText("Obtener cambio");
+        btnCambio.setEnabled(false);
+        btnCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,9 +135,12 @@ public class MainGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74)
-                        .addComponent(labelTexto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCambio)))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -154,11 +166,14 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1))
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelTexto)
-                        .addComponent(btnExaminar)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTexto)
+                            .addComponent(btnExaminar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCambio))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -176,6 +191,7 @@ public class MainGUI extends javax.swing.JFrame {
             txtSistema.setEnabled(true);
             btnExaminar.setEnabled(false);
             labelTexto.setEnabled(false);
+            btnCambio.setEnabled(true);
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
@@ -184,6 +200,7 @@ public class MainGUI extends javax.swing.JFrame {
             txtSistema.setEnabled(false);
             btnExaminar.setEnabled(true);
             labelTexto.setEnabled(true);
+            btnCambio.setEnabled(true);
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
@@ -227,6 +244,10 @@ public class MainGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El valor ingresado no es correcto", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_txtDescomponerActionPerformed
+
+    private void btnCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambioActionPerformed
+        
+    }//GEN-LAST:event_btnCambioActionPerformed
     
     /**
      * @param args the command line arguments
@@ -264,6 +285,7 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambio;
     private javax.swing.JButton btnExaminar;
     private javax.swing.ButtonGroup grupo;
     private javax.swing.JLabel jLabel1;
