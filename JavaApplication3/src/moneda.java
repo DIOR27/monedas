@@ -60,6 +60,23 @@ public class moneda {
         }
         monedas = numeros;
     }
+    
+    public boolean comp()
+    {
+        boolean bandera = true;
+        for (int i = monedas.length - 2; i >= 0; i--) 
+		{  
+			if (monedas[i+1] >= (monedas[i]*2)) 
+			{ 
+			 i--;	 
+			}
+			else
+			{
+			bandera = false;
+			} 
+		}
+        return bandera;
+    }
 
     public String cambio() {
         String aux = "";
