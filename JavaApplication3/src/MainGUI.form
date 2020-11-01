@@ -45,10 +45,10 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="labelTexto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="btnExaminar" min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jSeparator1" min="-2" pref="670" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -86,8 +86,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="177" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelTexto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExaminar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="54" pref="54" max="-2" attributes="0"/>
@@ -130,12 +130,15 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDevolucion">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator2">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="labelTexto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Elegir archivo de texto (*.txt):"/>
         <Property name="enabled" type="boolean" value="false"/>
@@ -147,6 +150,7 @@
           <ComponentRef name="grupo"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Archivo de texto"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
@@ -158,23 +162,31 @@
           <ComponentRef name="grupo"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Campo de texto"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnExaminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Examinar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExaminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Seleccione c&#xf3;mo desea leer el sistema monetario:"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescomponer">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescomponerActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
