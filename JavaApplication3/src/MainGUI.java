@@ -46,7 +46,6 @@ public class MainGUI extends javax.swing.JFrame {
         txtSistema = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtDevolucion = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         labelTexto = new javax.swing.JLabel();
@@ -56,6 +55,8 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtDescomponer = new javax.swing.JTextField();
         btnCambio = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtDevolucion = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,8 +68,6 @@ public class MainGUI extends javax.swing.JFrame {
         jLabel1.setText("Devolución:");
 
         jLabel2.setText("Ingrese el número a descomponer:");
-
-        txtDevolucion.setEditable(false);
 
         labelTexto.setText("Elegir archivo de texto (*.txt):");
         labelTexto.setEnabled(false);
@@ -116,6 +115,10 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        txtDevolucion.setColumns(20);
+        txtDevolucion.setRows(5);
+        jScrollPane2.setViewportView(txtDevolucion);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,7 +142,7 @@ public class MainGUI extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTexto)
+                                .addComponent(labelTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnCambio)))))
@@ -148,8 +151,8 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -184,9 +187,9 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(40, 40, 40))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -212,7 +215,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
         JFileChooser jf = new JFileChooser();
-        FileFilter filter = new FileNameExtensionFilter("Documentos de texto(*.txt)","txt");
+        FileFilter filter = new FileNameExtensionFilter("Documentos de texto(*.txt)", "txt");
         jf.setFileFilter(filter);
         jf.showOpenDialog(this);
         File archivo = jf.getSelectedFile();
@@ -222,7 +225,8 @@ public class MainGUI extends javax.swing.JFrame {
                 String file = archivo.getAbsolutePath();
                 reader = new FileReader(file);
                 BufferedReader br = new BufferedReader(reader);
-                   txtSistema.read(br, null);
+                txtSistema.read(br, null);
+                labelTexto.setText(file);
                 br.close();
                 txtSistema.setEnabled(true);
                 txtSistema.setEditable(false);
@@ -263,11 +267,10 @@ public class MainGUI extends javax.swing.JFrame {
                 monedita.setM(Integer.parseInt(txtDescomponer.getText()));
                 monedita.pasarstring(txtSistema.getText());
                 if (monedita.comp()) {
-                    monedita.cambio();
-                }
-                else
-                {
-                   JOptionPane.showMessageDialog(this, "El valor de las monedas deben ser al menos el doble de su inferior inmediato.", "Error", JOptionPane.ERROR_MESSAGE); 
+
+                    txtDevolucion.setText(monedita.cambio());
+                } else {
+                    JOptionPane.showMessageDialog(this, "El valor de las monedas deben ser al menos el doble de su inferior inmediato.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
             if (jRadioButton2.isSelected()) {
@@ -275,14 +278,12 @@ public class MainGUI extends javax.swing.JFrame {
                 monedita.setM(Integer.parseInt(txtDescomponer.getText()));
                 monedita.pasarstring(txtSistema.getText());
                 if (monedita.comp()) {
-                    monedita.cambio();
-                }
-                else
-                {
-                   JOptionPane.showMessageDialog(this, "El valor de las monedas deben ser al menos el doble de su inferior inmediato.", "Error", JOptionPane.ERROR_MESSAGE); 
+                    txtDevolucion.setText(monedita.cambio());
+                } else {
+                    JOptionPane.showMessageDialog(this, "El valor de las monedas deben ser al menos el doble de su inferior inmediato.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                   
+
             }
         } else {
             JOptionPane.showMessageDialog(this, "El sistema monetario ingresado no es correcto.\n\nEjemplo: 100,25,50,1", "Error", JOptionPane.ERROR_MESSAGE);
@@ -334,11 +335,12 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelTexto;
     private javax.swing.JTextField txtDescomponer;
-    private javax.swing.JTextField txtDevolucion;
+    private javax.swing.JTextArea txtDevolucion;
     private javax.swing.JTextArea txtSistema;
     // End of variables declaration//GEN-END:variables
 }

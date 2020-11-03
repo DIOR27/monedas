@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -61,6 +62,8 @@ public class moneda {
         monedas = numeros;
     }
     
+    public String tmp = "";
+    
     public boolean comp()
     {
         boolean bandera = true;
@@ -83,25 +86,24 @@ public class moneda {
 
         Vector<Integer> ans = new Vector<>();
 
-        // Traverse through all denomination 
         for (int i = monedas.length - 1; i >= 0; i--) {
-            // Find denominations 
             while (m >= monedas[i]) {
-                System.out.println("¿Es  " + m + " mayor o igual a " + monedas[i] + "?");
+                aux+="¿Es  " + m + " mayor o igual a " + monedas[i] + "?\n\n";
                 if (m>=monedas[i]) {
-                    System.out.println("Si, entonces " + m + " - " + monedas[i]);
+                    aux+="Si, entonces " + m + " - " + monedas[i] + "\n\n";
                 } else {
-                    System.out.println("No.");
+                    aux+="No.\n";
                 }
                 m -= monedas[i];
                 ans.add(monedas[i]);
             }
         }
-        // Print result 
-        System.out.print("Cambio: ");
+        
+        aux+="Cambio: ";
         for (int i = 0; i < ans.size(); i++) {
-            System.out.print(ans.elementAt(i) + " ");
+            aux+=ans.elementAt(i) + " ";
         }
+        //JOptionPane.showMessageDialog(null, aux);
         return aux;
     }
 
